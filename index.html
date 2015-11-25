@@ -2,36 +2,40 @@
 <html>
 <head>
   <title>Sample RxJs Widgets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <div id="bg-color-container">
-    <h1>Change the Background Color</h1>
-    <p>
-      By entering a valid named CSS color you can change the background color of this div.
-    </p>
-    <input type="text" placeholder="Type a color here" id="bg-color-input">
-    <ul id="ac-list">
-    </ul>
-  </div>
-
-  <div id="text-size">
-    <h1>Change the font size based on the mouses location</h1>
-    <div id="change-size-div">
-      Moving the mouse over this red div to change sizes
+  <div class="container">
+    <div id="bg-color-container">
+      <h1>Change the Background Color</h1>
+      <p>
+        By entering a valid named CSS color you can change the background color of this div.
+      </p>
+      <input type="text" placeholder="Type a color here" id="bg-color-input">
+      <div class="row" id="ac-list">
+      </div>
     </div>
-    <p id="change-size">
-      This paragraph should change size
-    </p>
-  </div>
 
-  <div id="autocomplete">
-    <form role="form">
-        <div class="form-group">
-          <label for="ac-input">Enter Query for Wikipedia</label>
-          <input type="text" id="ac-input">
-        </div>
-      </form>
+    <div id="text-size">
+      <h1>Change the font size based on the mouses location</h1>
+      <div id="change-size-div">
+        Moving the mouse over this red div to change sizes
+      </div>
+      <p id="change-size">
+        This paragraph should change size
+      </p>
+    </div>
+
+    <div id="autocomplete">
+      <form role="form">
+          <div class="form-group">
+            <label for="ac-input">Enter Query for Wikipedia</label>
+            <input type="text" id="ac-input">
+          </div>
+        </form>
+    </div>
   </div>
 
   <script src="bower_components/rxjs/dist/rx.all.js" type="text/javascript"></script>

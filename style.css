@@ -3,3 +3,8 @@
   width: 100%;
   background-color: red;
 }
+
+.color-node {
+  height: 30px;
+  color: white;
+}
