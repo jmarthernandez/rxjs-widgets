@@ -1,0 +1,19 @@
+{
+  "name": "divrx",
+  "version": "0.0.0",
+  "authors": [
+    "Justin Hernandez <jmarthernandez@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rxjs": "~4.0.7"
+  }
+}
