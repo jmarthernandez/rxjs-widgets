@@ -4,6 +4,7 @@
   var $input = document.querySelector("#bg-color-input");
   var $container = document.querySelector("#bg-color-container");
   var $results = document.querySelector("div#ac-list");
+  var $clear = document.querySelector("#bg-color-clear");
   var $node, change;
 
   function setBackground (color) {
@@ -27,7 +28,6 @@
       }
     })
 
-
     $node = document.querySelectorAll(".color-node");
     
     change = Rx.Observable.fromEvent($node, 'click')
@@ -42,8 +42,12 @@
   var reset = Rx.Observable.fromEvent($input, 'keydown')
     .map(function (e) { return e.target.value })
 
+  var clear = Rx.Observable.fromEvent($clear, 'click')
+    .map(function (e) { return e })
+
   search.subscribe(searchColors.bind($results))
   reset.subscribe(clearColors.bind($results))
+  clear.subscribe(clearColors.bind($results))
 }());
 
 //change-size
@@ -58,4 +62,28 @@
     this.style.fontSize = (num / 10) + 'px'
   }
   source.subscribe(setSize.bind($text))
+}());
+
+(function (){
+  $swipe = document.querySelector("#swipe-inner");
+  $outer = document.querySelector("#swipe-outer");
+  console.log($swipe)
+  console.log($outer)
+
+  var swipeMouseDowns = Rx.Observable.fromEvent($swipe, "mousedown"),
+  outerMouseMoves = Rx.Observable.fromEvent($outer, "mousemove"),
+  outerMouseUps = Rx.Observable.fromEvent($outer, "mouseup"),
+  swipeMouseUps = Rx.Observable.fromEvent($swipe, "mouseup"),
+
+  swipeMouseDrags = swipeMouseDowns.concatMap(function (down) {
+    return outerMouseMoves.takeUntil(outerMouseUps)
+  })
+
+  function move (dragPoint) {
+    console.log(dragPoint)
+    this.style.left = dragPoint.pageX -50 + "px";
+  }
+
+  swipeMouseDrags.subscribe(move.bind($swipe));
+
 }())

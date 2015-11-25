@@ -8,3 +8,17 @@
   height: 30px;
   color: white;
 }
+
+#swipe-outer {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  background-color: DarkSlateGray;
+}
+
+#swipe-inner {
+  position: absolute;
+  height: 300px;
+  width: 50px;
+  background-color: MintCream;
+}
