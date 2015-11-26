@@ -1,12 +1,22 @@
+#bg-color-container {
+  padding: 10px;
+}
+
 #change-size-div {
+  background-color: red;
   height: 100px;
   width: 100%;
-  background-color: red;
+}
+
+.center {
+  margin: 0 auto;
+  width: 95%;
 }
 
 .color-node {
-  height: 30px;
   color: white;
+  font-size: 15px;
+  height: 30px;
 }
 
 #swipe-outer {

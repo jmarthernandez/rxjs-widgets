@@ -32,7 +32,7 @@
     $node = document.querySelectorAll(".color-node");
 
     change = Observable.fromEvent($node, 'click').
-      map(function (e) { return e.target.innerHTML; });
+      map(function (e) { clearColors.call($results); return e.target.innerHTML; });
 
     change.subscribe(setBackground.bind($container));
   }
@@ -43,11 +43,7 @@
     distinctUntilChanged().
     map(function (search) { clearColors.call($results); return search; });
 
-  clear = Observable.fromEvent($clear, 'click')
-    .map(function (e) { return e; });
-
   search.subscribe(searchColors);
-  clear.subscribe(clearColors.bind($results));
 }());
 
 //change-size
