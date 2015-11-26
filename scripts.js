@@ -48,21 +48,26 @@
 
 //change-size
 (function (){
+  var Observable = Rx.Observable;
   $text = document.querySelector("#change-size");
   $swipe = document.querySelector("#change-size-div");
+  $counter = document.querySelector("#change-size-counter");
 
-  var source = Rx.Observable.fromEvent($swipe, 'mousemove')
-    .map(function (e) { return window.innerWidth - e.clientX })
+  var source = Observable.fromEvent($swipe, 'mousemove').
+    map(function (e) { return window.innerWidth - e.clientX; });
 
   function setSize (num) {
-    this.style.fontSize = (num / 10) + 'px'
+    this.text.style.fontSize = (num / 10) + 'px';
+    this.counter.innerHTML = 'Font-size is ' + (num / 10) + 'px';
   }
-  source.subscribe(setSize.bind($text))
+
+  source.subscribe(setSize.bind( {text: $text, counter: $counter} ))
 }());
 
 //swipe
 (function (){
   $swipe = document.querySelector("#swipe-inner");
+  $outer = document.querySelector("#swipe-outer");
   $outer = document.querySelector("#swipe-outer");
 
   var swipeMouseDowns = Rx.Observable.fromEvent($swipe, "mousedown"),
